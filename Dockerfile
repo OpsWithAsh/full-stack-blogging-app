@@ -7,6 +7,7 @@ ENV APP_HOME=/usr/src/app
 WORKDIR $APP_HOME
 
 COPY target/*.jar ./
-RUN mv *.jar app.jar
+
+RUN mv $(ls *.jar | grep -v original) app.jar
 
 ENTRYPOINT ["java","-jar","app.jar"]
